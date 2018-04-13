@@ -1,0 +1,42 @@
+<div class="container-fluid" >
+
+  <div class="row" >
+
+    <div class="col-12 box1" >
+      <div class="row" >
+
+        <div class="col-6 box1 text-center">
+
+          <br>
+          <h3>Upload an image</h3>
+          <br>
+          <br>
+          <input  type="file"  accept="image/*" capture="camera"  (change)="getVal($event);" />
+          <br>
+          <br>
+
+        </div>
+        <div class="col-6 box1 ">
+          <img [src]="url" class="center">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-12 box1" >
+
+      <div *ngIf="imageArray.length" >
+
+        <div *ngFor="let image of imageArray; let i = index;">
+          
+          <img  [src]=image.url class="center" style="height: 100px;">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
