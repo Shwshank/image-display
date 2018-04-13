@@ -29,15 +29,12 @@ export class SubmitAreaComponent implements OnInit {
       this.url = event.target.result;
       this.pushToImageArray(this.url);
     }
-
   }
 
   pushToImageArray(urlBase64) {
 
     let i = this.imageArray.length +1;
-
     this.imageArray.push({id:i, url:urlBase64});
-    console.log(this.imageArray);
   }
 
 }

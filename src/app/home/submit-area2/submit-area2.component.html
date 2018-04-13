@@ -1,0 +1,67 @@
+<div class="container-fluid" >
+
+  <div class="row" >
+
+    <div class="col-6 box2 text-center" >
+      <br>
+      <br>
+      <br>
+      <h3 *ngIf="!url"> Get a welcome pic!</h3>
+      <input *ngIf="!url"  type="file"  accept="image/*" capture="camera"  (change)="getVal($event);" />
+      <button *ngIf="url" type="button" name="button" class="btn btn-primary"  (click)="addImage()" > Add another </button>
+      <br>
+      <br>
+      <button *ngIf="url" type="button" name="button" class="btn btn-warning"  (click)="removeMainImage()" > Remove Main Image </button>
+      <br>
+      <img *ngIf="url" [src]="url" class="center" style="height:700px !important; z-index:-1; opacity: 0.5;" >
+
+    </div>
+
+    <div class="col-6 box2 text-center" style="overflow-y:auto">
+
+      <br>
+
+      <div *ngIf="imageArray.length">
+
+        <div  *ngFor="let image of imageArray; let i = index;">
+          <span style="float:left" ></span>{{i+1}} . {{image.msg}}
+          <br>
+          <img [src]=image.url class="center" style="height:200px; !important"  >
+          <br>
+          <button type="button" name="button" class="btn btn-warning" (click)="remove(image.id)" > Remove </button>
+          <hr>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-12" >
+    </div>
+  </div>
+</div>
+
+<!-- New Image Modal -->
+<div class="modal fade" id="addNewImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new pic</h5>
+      </div>
+      <div class="modal-body text-center" style="height:300px; overflow-y: auto">
+
+          <div class="row justify-content-center text-center" >
+            <input type="text"  [(ngModel)]="msg" />
+            <br>
+            <input type="file"  accept="image/*" capture="camera"  (change)="getVal2($event);" />
+            <br>
+            <img [src]="url2" class="center">
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRules" (click)='saveImage()'>Add user</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- New Image Modal -->
